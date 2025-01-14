@@ -13,11 +13,12 @@
         <div class="container">
             <input type="text" id="barcodeValue" placeholder="Enter barcode value">
             <select id="barcodeFormat">
+                <option value="CODE39">CODE39</option>
                 <option value="CODE128">CODE128</option>
                 <option value="EAN13">EAN-13</option>
                 <option value="EAN8">EAN-8</option>
                 <option value="UPC">UPC</option>
-                <option value="CODE39">CODE39</option>
+                
             </select>
             <button onclick="generateBarcode()">Generate Barcode</button>
             <div>
@@ -29,7 +30,7 @@
     </div>
 
     <footer>
-        <p>Created by Craig Woodcock | <a href="https://github.com/craigwoodcock" target="_blank">GitHub</a> | © 2025</p>
+        <p>Created by Craig Woodcock | © 2025 |  <a href="https://github.com/craigwoodcock" target="_blank">GitHub</a></p>
     </footer>
 
     <!-- JavaScript -->
