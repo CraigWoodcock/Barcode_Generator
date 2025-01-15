@@ -25,18 +25,18 @@ A lightweight, browser-based barcode generator that creates and exports SVG barc
 
 ## Demo
 
-Access the live demo at: `https://CraigWoodcock.github.io/barcode-generator`
+Access the live demo at: [CraigWoodcock.github.io/Barcode_Generator](https://CraigWoodcock.github.io/Barcode_Generator)
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://CraigWoodcock.github.io/barcode-generator
+git clone https://CraigWoodcock.github.io/Barcode_Generator
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd barcode-generator
+cd Barcode_Generator
 ```
 
 3. Open `index.html` in your browser to run locally, or deploy to GitHub Pages.
@@ -50,7 +50,7 @@ To deploy on GitHub Pages:
 3. Select the main branch as the source
 4. Save the changes
 
-The site will be published at `https://[your-username].github.io/barcode-generator`
+The site will be published at `https://[your-username].github.io/Barcode_Generator`
 
 ## Usage
 
