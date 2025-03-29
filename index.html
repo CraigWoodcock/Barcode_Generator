@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barcode Generator</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js" defer></script>
     <link rel="stylesheet" href="./public/css/style.css">
 </head>
 <body>
     <div class="main-content">
         <h1>Barcode Generator</h1>
         <div class="container">
+            <input type="text" id="barcodeName" placeholder="Enter barcode name">
             <input type="text" id="barcodeValue" placeholder="Enter barcode value">
+            <div class="mask-container">
+                <input type="checkbox" id="maskValue">
+                <label for="maskValue">Mask value (for sensitive data)</label>
+            </div>
             <select id="barcodeFormat">
-                <option value="CODE39">CODE39</option>
                 <option value="CODE128">CODE128</option>
+                <option value="CODE39">CODE39</option>
                 <option value="EAN13">EAN-13</option>
                 <option value="EAN8">EAN-8</option>
                 <option value="UPC">UPC</option>
-                
             </select>
-            <button onclick="generateBarcode()">Generate Barcode</button>
-            <div>
-                <svg id="barcode"></svg>
+            <div class="format-info">
+                <h3>Format Information:</h3>
+                <div id="formatDescription"></div>
             </div>
-            <button id="download" onclick="downloadBarcode()" style="display: none;">Download SVG</button>
+            <button id="generateBarcodeBtn">Generate Barcode</button>
+            <div class="barcode-container">
+                <div id="barcodeName-display"></div>
+                <svg id="barcode"></svg>
+                <div id="barcodeValue-display"></div>
+            </div>
+            <button id="download" style="display: none;">Download SVG</button>
             <div id="error" class="error"></div>
         </div>
     </div>
@@ -34,6 +44,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="./public/js/main.js"></script>
+    <script src="./public/js/main.js" defer></script>
 </body>
 </html>

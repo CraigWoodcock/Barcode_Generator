@@ -39,6 +39,19 @@ input, select, button {
     font-size: 16px;
 }
 
+input[type="text"], 
+input[type="password"] {
+    transition: border 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -59,6 +72,10 @@ button:hover {
 #download {
     margin-top: 20px;
     background-color: #008CBA;
+}
+
+#download:hover {
+    background-color: #0077a3;
 }
 
 .error {
@@ -85,4 +102,42 @@ footer a {
 
 footer a:hover {
     color: #45a049;
+}
+
+.format-info {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 15px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mask-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.mask-container input[type="checkbox"] {
+    min-width: auto;
+    margin: 0;
+}
+
+.barcode-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+#barcodeName-display {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#barcodeValue-display {
+    margin-top: 10px;
+    color: #666;
 }
