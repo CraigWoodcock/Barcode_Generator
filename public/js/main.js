@@ -92,14 +92,14 @@ function generateBarcode() {
             format: format,
             width: 2,
             height: 100,
-            displayValue: !maskCheckbox.checked
+            displayValue: !maskCheckbox.checked  // Show value in SVG only when not masked
         });
         errorDiv.textContent = '';
         downloadBtn.style.display = 'inline-block';
         
         // Update displays
         barcodeNameDisplay.textContent = name;
-        barcodeValueDisplay.textContent = maskCheckbox.checked ? '' : value;
+        barcodeValueDisplay.textContent = ''; // Never show value below SVG
     } catch (e) {
         errorDiv.textContent = 'Invalid input for selected barcode format';
         downloadBtn.style.display = 'none';
