@@ -110,21 +110,59 @@ function generateBarcode() {
 updateFormatDescription();
 
 /**
- * Downloads the generated barcode as an SVG file
+ * Downloads the generated barcode as a PNG file
  */
 function downloadBarcode() {
     const svg = document.getElementById('barcode');
-    const svgData = new XMLSerializer().serializeToString(svg);
-    const blob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
+    const name = barcodeName.value;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
     
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'barcode.svg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Create a blob from the SVG
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+    const svgUrl = URL.createObjectURL(svgBlob);
+    
+    // Create an image from the SVG
+    const img = new Image();
+    img.onload = function() {
+        // Set canvas size to match SVG plus extra space for name
+        canvas.width = img.width;
+        canvas.height = img.height + (name ? 30 : 0); // Add space for name if it exists
+        
+        // Draw white background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw name if it exists
+        if (name) {
+            ctx.font = 'bold 16px Arial';
+            ctx.fillStyle = '#000000';
+            ctx.textAlign = 'center';
+            ctx.fillText(name, canvas.width / 2, 20);
+            
+            // Draw the barcode image below the name
+            ctx.drawImage(img, 0, 30);
+        } else {
+            // Draw the barcode image at the top if no name
+            ctx.drawImage(img, 0, 0);
+        }
+        
+        // Convert to PNG and download
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${name || 'barcode'}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }, 'image/png', 1.0);
+        
+        URL.revokeObjectURL(svgUrl);
+    };
+    img.src = svgUrl;
 }
 
 // Export functions for use in HTML
